@@ -118,7 +118,18 @@ describe('http requests', function() {
 		            content: 'some content',
 		            tags: "t1,t2"
         		})
-        		.expect(302, done)
+        		.end(function(err, response){
+        			if(err) return done(err);
+
+        			//if not:
+        			Page.findOne({ title: 'testTitle'}).exec()
+        				.then(function(page){
+        					expect(page).to.not.be.equal(null);
+        					done();
+        				})
+        				.then(null, done);
+        		});
+        		//.expect(302, done)
         });
     });
 
