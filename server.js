@@ -1,4 +1,5 @@
 var http = require('http');
+<<<<<<< HEAD
 var path = require('path');
 var socketio = require('socket.io');
 
@@ -40,3 +41,12 @@ io.on('connection', function (socket) {
   })
 
 });
+=======
+var server = http.createServer();
+
+server.on('request', require('./app'));
+
+server.listen(3001, function () {
+    console.log('Server is listening on port 3001!');
+});
+>>>>>>> b3f6ff7e33259c2df1c0de1c9e96deb03ed7ce0b
